@@ -14,4 +14,5 @@ public class Article extends Product{
 
     private String name;
     private int stock;
+
 }
