@@ -16,5 +16,5 @@ public class DesingType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idType;
     private String type;
-    private Desing desing;
+
 }
