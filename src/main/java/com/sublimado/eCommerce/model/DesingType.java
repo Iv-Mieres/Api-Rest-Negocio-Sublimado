@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,5 +17,7 @@ public class DesingType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idType;
     private String type;
+    @OneToMany(mappedBy = "desingType")
+    private List<Desing> desings;
 
 }

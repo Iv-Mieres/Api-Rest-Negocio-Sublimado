@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +17,6 @@ public class Province {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idProvince;
     private String name;
+    @OneToMany(mappedBy = "province")
+    private List<Client> clients;
 }

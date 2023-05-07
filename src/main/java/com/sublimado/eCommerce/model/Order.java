@@ -18,6 +18,15 @@ public class Order {
     private Long idOrder;
     private double totalPrice;
     private LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "fkDesing")
+    private Desing desing;
+    @ManyToOne
+    @JoinColumn(name = "fkClient")
+    private Client client;
+    @ManyToOne
+    @JoinColumn(name = "fkArticle")
+    private Article article;
 
     public boolean validateStock(){ return false;}
     public int discountStock(){return 0;}
