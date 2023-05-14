@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "types")
-public class DesingType {
+public class DesingType extends Product{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
