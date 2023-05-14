@@ -18,6 +18,7 @@ public class Order {
     private Long idOrder;
     private double totalPrice;
     private LocalDate date;
+    private int numberOfItems;
     @ManyToOne
     @JoinColumn(name = "fkDesing")
     private Desing desing;
@@ -28,7 +29,26 @@ public class Order {
     @JoinColumn(name = "fkArticle")
     private Article article;
 
-    public boolean validateStock(){ return false;}
-    public int discountStock(){return 0;}
-    public double calculateTotalPrice(){return 0.0;}
+    public void validateStock() throws Exception {
+        if(this.article.getStock() <= 0) throw new Exception("Stock no disponible");
+    }
+
+    public int discountStock() throws Exception {
+        if(this.numberOfItems < 0){
+            throw new Exception("El numero de items ingresado debe ser máyor a 0");
+        }
+        int discount = this.article.getStock() - this.numberOfItems;
+        if(discount < 0){
+            throw new Exception("Stock no disponible");
+        }
+        return discount;
+    }
+
+    public double calculateTotalPrice(){
+        double result = this.article.getPrice() + this.desing.getPrice();
+        return result;
+    }
+
+
+
 }
