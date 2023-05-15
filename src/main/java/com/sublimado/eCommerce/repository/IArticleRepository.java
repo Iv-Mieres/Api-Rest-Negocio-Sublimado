@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IArticleRepository extends JpaRepository<Article, Long> {
+
+    Article findByName(String name);
 }
